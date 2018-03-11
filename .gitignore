@@ -4,3 +4,5 @@ shoot.csproj
 shoot.sln
 shoot.userprefs
 Assembly-CSharp.csproj
+Temp
+UnityPackageManager

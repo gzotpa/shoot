@@ -29,8 +29,9 @@ public class Player : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update() {
-		if (jumpNow == 0 && gameObject.GetComponent<Rigidbody2D>().velocity.y != 0f) {
+		if (jumpNow == 0 && Mathf.Abs(gameObject.GetComponent<Rigidbody2D>().velocity.y) > 0.1f) {
 			jumpNow += 1;
+//			Debug.Log("jump to the sky");
 		}
 		/*        a = new Vector3(transform.localPosition.x - 0.5f, transform.localPosition.y, transform.localPosition.z);
                 b = new Vector3(transform.localPosition.x + 0.5f, transform.localPosition.y, transform.localPosition.z);
@@ -89,15 +90,13 @@ public class Player : MonoBehaviour {
 			Vector2 velocity = playerRigidbody2D.velocity;
 			velocity.y = Mathf.Min(velocity.y + moveJump, maxJump);
 			playerRigidbody2D.velocity = velocity;
+		//	Debug.Log("one jump" + " " + jumpNow);
 		}
 	}
-	void OnCollisionEnter2D(Collision2D collision) {
+	void OnCollisionStay2D(Collision2D collision) {
 		if (transform.localPosition.y >= collision.contacts[0].point.y) {
-			jumpNow = 0;
-		}
-		if (transform.localPosition.y <= collision.contacts[0].point.y) {
 			//            collision.gameObject.
-			//            jumpNow = 0;
+			            jumpNow = 0;
 		}
 
 	}
