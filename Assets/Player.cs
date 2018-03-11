@@ -101,4 +101,18 @@ public class Player : MonoBehaviour {
 		}
 
 	}
+
+	void OnTriggerStay2D(Collider2D collider) {
+		if (Input.GetKeyDown (KeyCode.S) && collider.gameObject.tag == "Background") {
+			Physics2D.IgnoreCollision (this.GetComponent<Collider2D> (),
+				collider.gameObject.transform.parent.GetComponent<Collider2D> ());
+		}
+	}
+
+	void OnTriggerExit2D(Collider2D collider) {
+		if (collider.gameObject.tag == "Background") {
+			Physics2D.IgnoreCollision (this.GetComponent<Collider2D> (),
+				collider.gameObject.transform.parent.GetComponent<Collider2D> (), false);
+		}
+	}
 }
