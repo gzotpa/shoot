@@ -94,7 +94,8 @@ public class Player : MonoBehaviour {
 		}
 	}
 	void OnCollisionStay2D(Collision2D collision) {
-		if (transform.localPosition.y >= collision.contacts[0].point.y) {
+		if (transform.localPosition.y >= collision.contacts[0].point.y 
+			&& Mathf.Abs(gameObject.GetComponent<Rigidbody2D>().velocity.y) < 0.1f) {
 			//            collision.gameObject.
 			            jumpNow = 0;
 		}
